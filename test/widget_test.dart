@@ -1,30 +1,20 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:myprofileapp/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('My Profile page displays profile information',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const MyProfileApp());
 
-    // Verify that our counter starts at 0.
+    expect(find.text('My Profile'), findsOneWidget);
+    expect(find.text('Diluka'), findsOneWidget);
+    expect(find.text('diluka.w@nsbm.ac.lk'), findsOneWidget);
     expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byIcon(Icons.person), findsOneWidget);
+    expect(find.byIcon(Icons.email), findsOneWidget);
+    expect(find.byIcon(Icons.star), findsOneWidget);
+    expect(find.byIcon(Icons.check), findsOneWidget);
   });
 }
